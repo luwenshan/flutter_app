@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:english_words/english_words.dart';
 
 void main() => runApp(new MyApp());
 
@@ -10,6 +11,10 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
+      // 注册路由表
+      routes: {
+        "new_page": (context) => NewRoute(),
+      },
       home: new MyHomePage(title: 'Home Page'),
     );
   }
@@ -51,12 +56,14 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text("open new route"),
               textColor: Colors.blue,
               onPressed: () {
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) {
-                  return new NewRoute();
-                }));
+                Navigator.pushNamed(context, "new_page");
+//                Navigator.push(context,
+//                    new MaterialPageRoute(builder: (context) {
+//                  return new NewRoute();
+//                }));
               },
-            )
+            ),
+            RandomWordsWidget(),
           ],
         ),
       ),
@@ -65,6 +72,17 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: new Icon(Icons.add),
       ),
+    );
+  }
+}
+
+class RandomWordsWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final wordPair = new WordPair.random();
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: new Text(wordPair.toString()),
     );
   }
 }
