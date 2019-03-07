@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_app/state_lifecycle.dart';
+import 'package:flutter_app/state_management.dart';
 
 void main() => runApp(new MyApp());
 
@@ -10,8 +12,7 @@ class MyApp extends StatelessWidget {
       title: "Flutter Demo",
       theme: new ThemeData(
         primarySwatch: Colors.blue,
-      ),
-      // 注册路由表
+      ), // 注册路由表
       routes: {
         "new_page": (context) => NewRoute(),
       },
@@ -64,6 +65,27 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             RandomWordsWidget(),
+            FlatButton(
+                child: Text("State生命周期"),
+                textColor: Colors.deepPurple,
+                onPressed: () {
+                  Navigator.push(context,
+                      new MaterialPageRoute(builder: (context) {
+                    return new CounterWidget(
+                      initValue: 10,
+                    );
+                  }));
+                }),
+            FlatButton(
+              child: Text("StatefulWidget状态管理"),
+              textColor: Colors.black,
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
+                  return new ParentWidgetC();
+                }));
+              },
+            ),
           ],
         ),
       ),
