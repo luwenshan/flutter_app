@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/state_lifecycle.dart';
 import 'package:flutter_app/state_management.dart';
 import 'package:flutter_app/listview.dart';
+import 'package:flutter_app/file_test.dart';
+import 'package:flutter_app/network_test.dart';
 
 void main() => runApp(new MyApp());
 
@@ -95,6 +97,26 @@ class _MyHomePageState extends State<MyHomePage> {
                     new MaterialPageRoute(builder: (context) {
                   return new ScrollControllerTestRoute();
                 }));
+              },
+            ),
+            FlatButton(
+              child: Text("文件操作"),
+              textColor: Colors.black,
+              onPressed: () {
+                Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                          return new FileOperationRoute();
+                        }));
+              },
+            ),
+            RaisedButton(
+              child: Text("WebSocket"),
+              textColor: Colors.black,
+              onPressed: () {
+                Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                          return new WebSocketRoute();
+                        }));
               },
             ),
           ],
