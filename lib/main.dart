@@ -2,6 +2,7 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/state_lifecycle.dart';
 import 'package:flutter_app/state_management.dart';
+import 'package:flutter_app/listview.dart';
 
 void main() => runApp(new MyApp());
 
@@ -83,6 +84,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.push(context,
                     new MaterialPageRoute(builder: (context) {
                   return new ParentWidgetC();
+                }));
+              },
+            ),
+            FlatButton(
+              child: Text("列表"),
+              textColor: Colors.black,
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
+                  return new ScrollControllerTestRoute();
                 }));
               },
             ),
